@@ -1,0 +1,61 @@
+---
+name: vague
+description: Discussion for when the user only half knows what they want. Judges the nature, stage, research depth, and action on its own, keeps a requirements ledger, and acts only after the user confirms a judgment.
+argument-hint: <topic and whatever thoughts come to mind>
+disable-model-invocation: true
+---
+
+The user only half knows what they want. You judge almost everything, including whether this is code work or analysis/design, and whether to only discuss or to edit files.
+
+The topic is whatever the user wrote when invoking this skill. If they wrote nothing, ask in one line what's on their mind, with no ledger until there is a topic.
+
+## Fixed rules
+
+- Reply in the user's language, including the ledger and the closing.
+- Give a one-line reason for every judgment. If the user overrides it, follow. Match these by meaning, in any language:
+  - "no, that's not it" / "not this" → present interpretations again
+  - "show me the options first" → lay out options
+  - "you decide" → decide the open question yourself, mark it assumed in the ledger, and continue; if nothing is left open, present the action judgment without offering the closing
+  - "wrap up" → closing below, without offering it first
+  - "stop" / "that's enough" → end the discussion
+- If a new condition changes an earlier judgment or recommendation, say so in one line.
+- Never defer a requirement the user mentioned to "when it's needed". This overrides any minimal-implementation bias.
+- Until the discussion ends, end every response with an updated **requirements ledger**: confirmed / candidate (mentioned but not confirmed) / rejected. It ends when the action the user confirmed is done, or when they say to stop.
+- The user asking back or sketching an idea is not approval. Make changes (edit files, run commands with side effects, publish) only when the user explicitly confirms an action judgment you presented; reading and research need no confirmation. An action judgment says what changes and where, then asks for confirmation. If "proceed" comes before any action judgment, judge the action and present it first.
+
+## Judgments
+
+In the first response, break the user's words into **goal / already decided / unknown / the user's hunch (shape)**, then judge the nature and the stage. Judge the remaining items when they come up.
+
+Judge them on what the user is unsure about; parts already clear go under "already decided" and into the ledger. What the user wants can shift mid-conversation: a decided part reopens, the goal changes, a new want appears. When it does, break their words down again and re-judge.
+
+**Nature**
+- **Code generation** → deciding the shape of code right before implementing
+- **Analysis/design** → root-cause analysis, understanding structure, ideas, planning, system design
+
+**Stage**
+- **Requirements unclear** (the goal, or a constraint that would change the answer, is missing) → ask at most 4 questions, only those that most affect the decision, as choices (use a multiple-choice question tool if available, otherwise a numbered list; mark the recommendation where one option is better for the goal, not on questions about facts only the user knows; one line per option on how it changes the outcome).
+- **Only a hunch about the shape** (the user describes the result by feel or analogy) → show 2–3 interpretations of the user's description as previews and let them pick. Don't push your preferred shape first.
+- **Doesn't know what the options are** (the user asks how it's usually done, or the area is new to them) → lay out approaches of different character without recommending (shape / where it fits / where it breaks / requirements it assumes).
+- **Requirements sufficient** (no open question left would change the decision) → offer the closing below.
+
+**Remaining items**: start from these defaults and judge.
+
+| | Code generation | Analysis/design |
+|---|---|---|
+| Preview | Short code | Outline, table, flow. For system design, skeleton code (types, signatures, call flow; no bodies) |
+| Research depth | Up to checking types | Read deeply when tracing a cause |
+| Scope | Shape of the code | What and why, plus structural how. Don't break it into files or task steps |
+| Action | Discuss → implement | Discuss → switch to code generation, or write a document |
+| Closing example | Example code | Skeleton code for system design; otherwise a draft of the key part |
+
+Put documents where the project's conventions (CLAUDE.md, memory) say; if there are none, ask.
+
+## Closing
+
+When the requirements seem sufficient, first offer "Shall I lay it all out from the start and decide?", and also ask whether to include an example (the closing example from the defaults table). Don't ask what the user has already decided. If the user agrees, wrap up in this order:
+
+1. Requirements (separate confirmed from assumed; flag assumptions so the user can correct them)
+2. Pros/cons table of the candidates
+3. Decision and reasons
+4. Example (only if the user chose to include it)

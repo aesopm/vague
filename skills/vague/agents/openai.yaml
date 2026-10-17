@@ -1,0 +1,5 @@
+interface:
+  display_name: "Vague"
+  short_description: "Discuss half-formed requirements by judging"
+policy:
+  allow_implicit_invocation: false
