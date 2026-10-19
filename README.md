@@ -92,19 +92,11 @@ codex plugin marketplace add aesopm/vague
 codex plugin add vague@vague
 ```
 
+Start a new session, then invoke: `$vague:vague <topic and whatever comes to mind>`. Codex CLI's `/` is only for built-in commands, so there is no `/vague`.
+
 Manual: copy the `skills/vague` folder to `~/.codex/skills/vague` (global) or `.agents/skills/vague` in a repo, and invoke with `$vague`.
 
 `skills/vague/agents/openai.yaml` turns off implicit invocation, so Codex uses the skill only when you call it. In Claude Code, `disable-model-invocation` does the same.
-
-## Evals
-
-`evals/` checks the fixed rules: no changes before confirmation, the first-response breakdown and the ledger, at most 4 questions, empty invocation, reply language, and the overrides that fit in one message ("show me the options first", "you decide", "wrap up"). "Not this" and "stop" need earlier turns, so they aren't covered. Run it from the repo root with Claude Code:
-
-```
-claude plugin eval . --allow-tools Write Edit
-```
-
-`--allow-tools Write Edit` gives the agent the tools it must not use before confirmation; without it, those checks pass trivially. Each case runs on your own account and is compared against a run without the plugin, so it costs tokens. Add `--runs 1` for a quick pass.
 
 ## License
 

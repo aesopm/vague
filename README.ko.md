@@ -92,19 +92,11 @@ codex plugin marketplace add aesopm/vague
 codex plugin add vague@vague
 ```
 
+새 세션을 열고 `$vague:vague <주제와 떠오르는 생각>`으로 호출합니다. Codex CLI의 `/`는 내장 명령 전용이라 `/vague`는 없습니다.
+
 수동 설치: `skills/vague` 폴더를 `~/.codex/skills/vague`(전역)나 레포 안의 `.agents/skills/vague`에 복사하고 `$vague`로 호출합니다.
 
 `skills/vague/agents/openai.yaml`이 암묵적 호출을 꺼 두어서, Codex는 직접 부를 때만 이 스킬을 씁니다. Claude Code에서는 `disable-model-invocation`이 같은 역할을 합니다.
-
-## Eval
-
-`evals/`는 고정 규칙을 확인합니다. 확인 전 변경 금지, 첫 응답의 분해와 원장, 질문 4개 이하, 빈 호출, 응답 언어, 그리고 한 메시지 안에 넣을 수 있는 판단 뒤집기("선택지부터 보여줘", "네가 정해", "정리해")입니다. "이건 아냐"와 "그만"은 앞선 대화가 있어야 해서 다루지 않습니다. 레포 루트에서 Claude Code로 실행합니다.
-
-```
-claude plugin eval . --allow-tools Write Edit
-```
-
-`--allow-tools Write Edit`는 확인 전에 쓰면 안 되는 도구를 에이전트에게 쥐여 주는 옵션입니다. 이게 없으면 그 확인은 항상 통과합니다. 케이스마다 사용자 계정으로 실행되고 플러그인 없이 돌린 결과와 비교하므로 토큰이 듭니다. 빠르게 확인하려면 `--runs 1`을 붙이세요.
 
 ## 라이선스
 

@@ -15,13 +15,13 @@ The topic is whatever the user wrote when invoking this skill. If they wrote not
 - Give a one-line reason for every judgment. If the user overrides it, follow. Match these by meaning, in any language:
   - "no, that's not it" / "not this" → present interpretations again
   - "show me the options first" → lay out options
-  - "you decide" → decide the open question yourself, mark it assumed in the ledger, and continue; if nothing is left open, present the action judgment without offering the closing
+  - "you decide" → decide the open question yourself, mark it assumed in the ledger, and continue; if nothing is left open, present the action judgment, with no closing offer and no question about an example
   - "wrap up" → closing below, without offering it first
   - "stop" / "that's enough" → end the discussion
 - If a new condition changes an earlier judgment or recommendation, say so in one line.
 - Never defer a requirement the user mentioned to "when it's needed". This overrides any minimal-implementation bias.
 - Until the discussion ends, end every response with an updated **requirements ledger**: confirmed / candidate (mentioned but not confirmed) / rejected. It ends when the action the user confirmed is done, or when they say to stop.
-- The user asking back or sketching an idea is not approval. Make changes (edit files, run commands with side effects, publish) only when the user explicitly confirms an action judgment you presented; reading and research need no confirmation. An action judgment says what changes and where, then asks for confirmation. If "proceed" comes before any action judgment, judge the action and present it first.
+- The user asking back or sketching an idea is not approval. Make changes (edit files, run commands with side effects, publish) only when the user explicitly confirms an action judgment you presented; reading and research need no confirmation. An action judgment says what changes and where, then asks for confirmation. If "proceed" comes before any action judgment, including in the message that invokes this skill ("just do it"), judge the action and present it first; that earlier "proceed" is not confirmation.
 
 ## Judgments
 
