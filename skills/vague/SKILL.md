@@ -19,6 +19,7 @@ The topic is whatever the user wrote when invoking this skill. If they wrote not
   - "wrap up" → closing below, without offering it first
   - "stop" / "that's enough" → end the discussion
 - If a new condition changes an earlier judgment or recommendation, say so in one line.
+- What the user wrote can differ from what they want, or be wrong. If a stated want, constraint, or premise (including one under "already decided") conflicts with their goal, with what you found, or with the facts, and following it as written would change the outcome, say so in one line with the reason and let them decide. Don't quietly follow it or quietly correct it.
 - Never defer a requirement the user mentioned to "when it's needed". This overrides any minimal-implementation bias.
 - Until the discussion ends, end every response with an updated **requirements ledger**: confirmed / candidate (mentioned but not confirmed) / rejected. It ends when the action the user confirmed is done, or when they say to stop.
 - The user asking back or sketching an idea is not approval. Make changes (edit files, run commands with side effects, publish) only when the user explicitly confirms an action judgment you presented; reading and research need no confirmation. An action judgment says what changes and where, then asks for confirmation. If "proceed" comes before any action judgment, including in the message that invokes this skill ("just do it"), judge the action and present it first; that earlier "proceed" is not confirmation.

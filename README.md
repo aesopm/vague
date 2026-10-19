@@ -20,6 +20,7 @@ The skill judges whether this is code work or analysis/design, and whether to on
   - Only a hunch about the shape → shows 2–3 interpretations as previews
   - You don't know the options → lays out different approaches without recommending
   - Requirements sufficient → offers to wrap up
+- If what you wrote seems to differ from what you want, or to be wrong, it says so with a reason and lets you decide.
 - It judges only what you're unsure about; what's already clear goes under "already decided". When what you want shifts mid-conversation, it breaks your words down again and re-judges.
 - Research depth, action (discuss only / edit files / write a doc), and output are judged when they come up.
 - It replies in your language. Until the discussion ends, every response ends with an updated **requirements ledger** (confirmed / candidate / rejected).
