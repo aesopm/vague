@@ -26,6 +26,8 @@ The skill judges whether this is code work or analysis/design, and whether to on
 - It replies in your language. Until the discussion ends, every response ends with an updated **requirements ledger** (confirmed / candidate / rejected).
 - Changes like editing files happen only after the skill presents an action judgment (what changes and where) and you confirm it. Asking back or sketching an idea doesn't count as approval. Reading and research need no confirmation.
 - The discussion ends when the confirmed action is done, or when you say to stop.
+- When wrapping up, you can ask for a **handoff** for someone else, or an agent, to build from: acceptance criteria split into auto (with how each is checked) and human, constraints, assumptions with IDs (A1, A2, …) to confirm before building, and non-goals from the rejected items, plus the same content as a JSON block. Every requirement must be checkable, so wording like "feels natural" becomes a measurable criterion or a human check. Where it goes, and any criteria for what counts as auto, come from your project's conventions (CLAUDE.md, memory).
+- When no one can reply right away (an unattended run, or an issue thread), it posts all its questions at once as numbered choices and stops instead of guessing.
 
 Overriding a judgment (matched by meaning, in any language):
 

@@ -23,6 +23,7 @@ The topic is whatever the user wrote when invoking this skill. If they wrote not
 - Never defer a requirement the user mentioned to "when it's needed". This overrides any minimal-implementation bias.
 - Until the discussion ends, end every response with an updated **requirements ledger**: confirmed / candidate (mentioned but not confirmed) / rejected. It ends when the action the user confirmed is done, or when they say to stop.
 - The user asking back or sketching an idea is not approval. Make changes (edit files, run commands with side effects, publish) only when the user explicitly confirms an action judgment you presented; reading and research need no confirmation. An action judgment says what changes and where, then asks for confirmation. If "proceed" comes before any action judgment, including in the message that invokes this skill ("just do it"), judge the action and present it first; that earlier "proceed" is not confirmation.
+- If no one can reply right away (you run unattended, or the conversation is an issue or comment thread), put your questions in one message (still at most 4, each with numbered choices, no extra open questions), end with the ledger, and stop. Don't guess the answers to keep going; pick up from the reply.
 
 ## Judgments
 
@@ -54,9 +55,36 @@ Put documents where the project's conventions (CLAUDE.md, memory) say; if there 
 
 ## Closing
 
-When the requirements seem sufficient, first offer "Shall I lay it all out from the start and decide?", and also ask whether to include an example (the closing example from the defaults table). Don't ask what the user has already decided. If the user agrees, wrap up in this order:
+When the requirements seem sufficient, first offer "Shall I lay it all out from the start and decide?", and also ask whether to include an example (the closing example from the defaults table) and whether to end with a handoff (below) for someone else, or an agent, to build from. Don't ask what the user has already decided. If the user agrees, wrap up in this order:
 
-1. Requirements (separate confirmed from assumed; flag assumptions so the user can correct them)
+1. Requirements (separate confirmed from assumed; flag assumptions so the user can correct them); with a handoff, skip this and put the handoff last
 2. Pros/cons table of the candidates
 3. Decision and reasons
 4. Example (only if the user chose to include it)
+5. Handoff (only if the user chose it)
+
+## Handoff
+
+A handoff adds one condition to "requirements sufficient": every confirmed requirement can be checked, either automatically (say how: a command, a test, an observable state) or by a person (mark it human). Turn vague wording ("feels natural", "fast enough") into a measurable criterion or mark it human; if you can't tell which, ask. If the project's conventions point to criteria for what is checked automatically and what needs a person, use them.
+
+Write it in the user's language, putting each item in exactly one section:
+
+1. Acceptance: what the result must do; auto (each with how it is checked) / human
+2. Constraints: limits the user confirmed on how it is built (an interface to keep, a library to use), not behavior
+3. Assumptions: everything marked assumed, including what you decided for the user ("you decide"), each with an ID (A1, A2, …), for the reader to confirm before building
+4. Non-goals: the rejected items, so the scope doesn't grow back
+5. The same content as a JSON block:
+
+```json
+{
+  "acceptance": {
+    "auto": [{ "criterion": "...", "check": "..." }],
+    "human": ["..."]
+  },
+  "constraints": ["..."],
+  "assumptions": [{ "id": "A1", "text": "..." }],
+  "non_goals": ["..."]
+}
+```
+
+Show it in the reply. Saving or posting it elsewhere (a file, an issue) is an action: put it where the project's conventions say, otherwise ask.
