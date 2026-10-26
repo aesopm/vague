@@ -23,7 +23,7 @@ The topic is whatever the user wrote when invoking this skill. If they wrote not
 - Never defer a requirement the user mentioned to "when it's needed". This overrides any minimal-implementation bias.
 - Until the discussion ends, end every response with an updated **requirements ledger**: confirmed / candidate (mentioned but not confirmed) / rejected. It ends when the action the user confirmed is done, or when they say to stop.
 - The user asking back or sketching an idea is not approval. Make changes (edit files, run commands with side effects, publish) only when the user explicitly confirms an action judgment you presented; reading and research need no confirmation. An action judgment says what changes and where, then asks for confirmation. If "proceed" comes before any action judgment, including in the message that invokes this skill ("just do it"), judge the action and present it first; that earlier "proceed" is not confirmation.
-- If no one can reply right away (you run unattended, or the conversation is an issue or comment thread), put your questions in one message (still at most 4, each with numbered choices, no extra open questions), end with the ledger, and stop. Don't guess the answers to keep going; pick up from the reply.
+- Only if no one can reply right away (a scheduled or CI run with no user in the session, or the conversation is an issue or comment thread; a live chat never counts, even with auto-approved tools or an auto mode), put your questions in one message (still at most 4, each with numbered choices, no extra open questions), end with the ledger, and stop. Don't guess the answers to keep going; pick up from the reply.
 
 ## Judgments
 
@@ -36,7 +36,7 @@ Judge them on what the user is unsure about; parts already clear go under "alrea
 - **Analysis/design** → root-cause analysis, understanding structure, ideas, planning, system design
 
 **Stage**
-- **Requirements unclear** (the goal, or a constraint that would change the answer, is missing) → ask at most 4 questions, only those that most affect the decision, as choices (use a multiple-choice question tool if available, otherwise a numbered list; mark the recommendation where one option is better for the goal, not on questions about facts only the user knows; one line per option on how it changes the outcome).
+- **Requirements unclear** (the goal, or a constraint that would change the answer, is missing) → ask at most 4 questions, only those that most affect the decision, as choices (if someone can reply now and a multiple-choice question tool is available, ask through the tool, not as text; otherwise a numbered list; mark the recommendation where one option is better for the goal, not on questions about facts only the user knows; one line per option on how it changes the outcome).
 - **Only a hunch about the shape** (the user describes the result by feel or analogy) → show 2–3 interpretations of the user's description as previews and let them pick. Don't push your preferred shape first.
 - **Doesn't know what the options are** (the user asks how it's usually done, or the area is new to them) → lay out approaches of different character without recommending (shape / where it fits / where it breaks / requirements it assumes).
 - **Requirements sufficient** (no open question left would change the decision) → offer the closing below.
@@ -55,7 +55,7 @@ Put documents where the project's conventions (CLAUDE.md, memory) say; if there 
 
 ## Closing
 
-When the requirements seem sufficient, first offer "Shall I lay it all out from the start and decide?", and also ask whether to include an example (the closing example from the defaults table) and whether to end with a handoff (below) for someone else, or an agent, to build from. Don't ask what the user has already decided. If the user agrees, wrap up in this order:
+When the requirements seem sufficient, first offer "Shall I lay it all out from the start and decide?", and also ask whether to include an example (the closing example from the defaults table) and whether to end with a handoff (below) for someone else, or an agent, to build from; ask these through a multiple-choice question tool if one is available, as in the stage questions. Don't ask what the user has already decided. If the user agrees, wrap up in this order:
 
 1. Requirements (separate confirmed from assumed; flag assumptions so the user can correct them); with a handoff, skip this and put the handoff last
 2. Pros/cons table of the candidates
