@@ -77,6 +77,14 @@ A condensed version of a real session where vague was used to rework vague itsel
 
 ## Install
 
+### Any agent (skills CLI)
+
+```bash
+npx skills add aesopm/vague
+```
+
+Installs into the current project for the agents it detects (Claude Code, Codex, and others); add `-g` to install globally. Invoke with `/vague` in Claude Code or `$vague` in Codex.
+
 ### Claude Code
 
 ```

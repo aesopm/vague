@@ -77,6 +77,14 @@ vague로 vague 자체를 고쳤던 실제 세션을 줄인 것입니다.
 
 ## 설치
 
+### 모든 에이전트 (skills CLI)
+
+```bash
+npx skills add aesopm/vague
+```
+
+감지된 에이전트(Claude Code, Codex 등)에 현재 프로젝트 기준으로 설치합니다. 전역 설치는 `-g`를 붙입니다. Claude Code에서는 `/vague`, Codex에서는 `$vague`로 호출합니다.
+
 ### Claude Code
 
 ```
